@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_rest/utils/responsive.dart';
 import 'package:flutter_api_rest/widgets/circle.dart';
 import 'package:flutter_api_rest/widgets/icon_container.dart';
 
@@ -10,9 +11,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final double pinkSize = size.width * 0.8;
-    final double orangeSize = size.width * 0.57;
+    final Responsive responsive = Responsive.of(context);
+
+    //final Size size = MediaQuery.of(context).size;
+    final double pinkSize = responsive.wp(80);
+    final double orangeSize = responsive.wp(57);
 
     return Scaffold(
       body: Container(
@@ -38,8 +41,20 @@ class _HomePageState extends State<HomePage> {
                 )),
             Positioned(
               top: pinkSize * 0.35,
-              child: IconContainer(
-                size: size.width * 0.17,
+              child: Column(
+                children: [
+                  IconContainer(
+                    size: responsive.wp(17),
+                  ),
+                  SizedBox(
+                    height: responsive.dp(3),
+                  ),
+                  Text(
+                    "Hola De nuevo \n Bienvenido!!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: responsive.dp(1.6)),
+                  )
+                ],
               ),
             )
           ],
