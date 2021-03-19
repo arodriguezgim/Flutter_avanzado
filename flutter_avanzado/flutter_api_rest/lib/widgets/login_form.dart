@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_rest/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -14,12 +15,14 @@ class _LoginFormState extends State<LoginForm> {
       right: 20,
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: "DIRECCION EMAIL",
-                labelStyle: TextStyle(
-                    color: Colors.black45, fontWeight: FontWeight.w500)),
-          )
+          InputText(
+            keyboardType: TextInputType.emailAddress,
+            label: 'DIRECCION EMAIL',
+          ),
+          InputText(
+            label: 'PASSWORD',
+            obscureText: true,
+          ),
         ],
       ),
     );
