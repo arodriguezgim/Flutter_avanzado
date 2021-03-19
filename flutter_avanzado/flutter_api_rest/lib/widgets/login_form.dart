@@ -19,10 +19,27 @@ class _LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             label: 'DIRECCION EMAIL',
           ),
-          InputText(
-            label: 'PASSWORD',
-            obscureText: true,
-          ),
+          Container(
+            decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.black12))),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InputText(
+                    label: 'PASSWORD',
+                    obscureText: true,
+                    borderEnabled: false,
+                  ),
+                ),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Password Olvidado",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ))
+              ],
+            ),
+          )
         ],
       ),
     );

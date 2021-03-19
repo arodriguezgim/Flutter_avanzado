@@ -24,47 +24,49 @@ class _HomePageState extends State<HomePage> {
           //Minimizo el teclado si toco fuera
           FocusScope.of(context).unfocus();
         },
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.white,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                  top: -pinkSize * 0.4,
-                  right: -pinkSize * 0.2,
-                  child: Circle(
-                    size: pinkSize,
-                    colors: [Colors.pinkAccent, Colors.pink],
-                  )),
-              Positioned(
-                  top: -orangeSize * 0.55,
-                  left: -orangeSize * 0.15,
-                  child: Circle(
-                    size: orangeSize,
-                    colors: [Colors.orange, Colors.deepOrangeAccent],
-                  )),
-              Positioned(
-                top: pinkSize * 0.35,
-                child: Column(
-                  children: [
-                    IconContainer(
-                      size: responsive.wp(17),
-                    ),
-                    SizedBox(
-                      height: responsive.dp(3),
-                    ),
-                    Text(
-                      "Hola De nuevo \n Bienvenido!!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: responsive.dp(1.6)),
-                    )
-                  ],
+        child: SingleChildScrollView(
+          child: Container(
+            width: double.infinity,
+            height: responsive.height,
+            color: Colors.white,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                    top: -pinkSize * 0.4,
+                    right: -pinkSize * 0.2,
+                    child: Circle(
+                      size: pinkSize,
+                      colors: [Colors.pinkAccent, Colors.pink],
+                    )),
+                Positioned(
+                    top: -orangeSize * 0.55,
+                    left: -orangeSize * 0.15,
+                    child: Circle(
+                      size: orangeSize,
+                      colors: [Colors.orange, Colors.deepOrangeAccent],
+                    )),
+                Positioned(
+                  top: pinkSize * 0.35,
+                  child: Column(
+                    children: [
+                      IconContainer(
+                        size: responsive.wp(17),
+                      ),
+                      SizedBox(
+                        height: responsive.dp(3),
+                      ),
+                      Text(
+                        "Hola De nuevo \n Bienvenido!!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: responsive.dp(1.6)),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              LoginForm()
-            ],
+                LoginForm()
+              ],
+            ),
           ),
         ),
       ),
