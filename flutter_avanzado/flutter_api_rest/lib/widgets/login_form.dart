@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_rest/utils/responsive.dart';
 import 'package:flutter_api_rest/widgets/input_text.dart';
 
 class LoginForm extends StatefulWidget {
@@ -9,6 +10,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
+    final Responsive responsive = Responsive.of(context);
+
     return Positioned(
       bottom: 30,
       left: 20,
@@ -18,6 +21,7 @@ class _LoginFormState extends State<LoginForm> {
           InputText(
             keyboardType: TextInputType.emailAddress,
             label: 'DIRECCION EMAIL',
+            fontSize: responsive.dp(1.5),
           ),
           Container(
             decoration: BoxDecoration(
@@ -29,6 +33,7 @@ class _LoginFormState extends State<LoginForm> {
                     label: 'PASSWORD',
                     obscureText: true,
                     borderEnabled: false,
+                    fontSize: responsive.dp(1.5),
                   ),
                 ),
                 TextButton(
@@ -39,7 +44,44 @@ class _LoginFormState extends State<LoginForm> {
                     ))
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: responsive.dp(5),
+          ),
+          SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                style: ButtonStyle(
+                  //padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.pinkAccent),
+                ),
+                onPressed: () {},
+                child: Text('Sign In'),
+              )),
+          SizedBox(
+            height: responsive.dp(3),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "New to friendly Desi?",
+                style: TextStyle(fontSize: responsive.dp(1.5)),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                      color: Colors.pinkAccent, fontSize: responsive.dp(1.6)),
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: responsive.dp(10),
+          ),
         ],
       ),
     );
