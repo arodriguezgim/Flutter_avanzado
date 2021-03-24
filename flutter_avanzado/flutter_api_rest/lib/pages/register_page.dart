@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api_rest/utils/responsive.dart';
 import 'package:flutter_api_rest/widgets/circle.dart';
 import 'package:flutter_api_rest/widgets/icon_container.dart';
-import 'package:flutter_api_rest/widgets/login_form.dart';
 
-class HomePage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
+  static const routeName = 'register';
   @override
-  _HomePageState createState() => _HomePageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -64,7 +64,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                LoginForm()
               ],
             ),
           ),
