@@ -29,8 +29,8 @@ class _LoginFormState extends State<LoginForm> {
       bottom: 30,
       child: Container(
         constraints: BoxConstraints(
-          maxWidth: responsive.isTablet ? 430 : 360,
-          minWidth: 350,
+          maxWidth: responsive.isTablet ? 430 : 300,
+          minWidth: 300,
         ),
         child: Form(
           key: _formKey,
@@ -80,7 +80,9 @@ class _LoginFormState extends State<LoginForm> {
                         onPressed: () {},
                         child: Text(
                           "Password Olvidado",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: responsive.dp(1.6)),
                         ))
                   ],
                 ),

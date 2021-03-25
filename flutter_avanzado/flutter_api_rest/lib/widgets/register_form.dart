@@ -30,8 +30,8 @@ class _RegisterFormState extends State<RegisterForm> {
       bottom: 30,
       child: Container(
         constraints: BoxConstraints(
-          maxWidth: responsive.isTablet ? 430 : 360,
-          minWidth: 350,
+          maxWidth: responsive.isTablet ? 430 : 300,
+          minWidth: 300,
         ),
         child: Form(
           key: _formKey,
