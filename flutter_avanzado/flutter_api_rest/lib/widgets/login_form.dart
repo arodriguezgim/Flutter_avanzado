@@ -83,29 +83,27 @@ class _LoginFormState extends State<LoginForm> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: responsive.dp(1.6)),
-                        ))
+                        )),
                   ],
                 ),
               ),
               SizedBox(
                 height: responsive.dp(5),
               ),
-              SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      //padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.pinkAccent),
-                    ),
-                    onPressed: _submit,
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(
-                          fontSize:
-                              responsive.dp(responsive.isTablet ? 1.2 : 1.5)),
-                    ),
-                  )),
+              TextButton(
+                child: Text(
+                  'Entrar',
+                  style: TextStyle(
+                      backgroundColor: Colors.pinkAccent,
+                      fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.6)),
+                ),
+                style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.pinkAccent,
+                    onSurface: Colors.grey,
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 40)),
+                onPressed: _submit,
+              ),
               SizedBox(
                 height: responsive.dp(3),
               ),
@@ -113,7 +111,7 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "New to friendly Desi?",
+                    "Eres un nuevo usuario en TravelAPP?",
                     style: TextStyle(fontSize: responsive.dp(1.5)),
                   ),
                   TextButton(
@@ -121,7 +119,7 @@ class _LoginFormState extends State<LoginForm> {
                       Navigator.pushNamed(context, 'register');
                     },
                     child: Text(
-                      'Sign Up',
+                      'Registrarse',
                       style: TextStyle(
                           color: Colors.pinkAccent,
                           fontSize: responsive.dp(1.5)),

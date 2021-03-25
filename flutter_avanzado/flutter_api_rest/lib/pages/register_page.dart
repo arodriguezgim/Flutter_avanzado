@@ -64,9 +64,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextStyle(
                             fontSize: responsive.dp(1.6), color: Colors.white),
                       ),
-                      SizedBox(height: responsive.dp(4.5)),
+                      SizedBox(height: responsive.dp(1.5)),
                       AvatarButton(
-                        imageSize: responsive.wp(25),
+                        imageSize: responsive.wp(20),
                       )
                     ],
                   ),
