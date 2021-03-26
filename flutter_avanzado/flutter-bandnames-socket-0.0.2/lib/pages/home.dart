@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Nos creamos una lista de bandas
   List<Band> bands = [
     Band(id: '1', name: 'Extremoduro', votes: 5),
     Band(id: '2', name: 'La Fuga', votes: 1),
@@ -22,25 +23,27 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BandNames', style: TextStyle(color: Colors.black87)),
+        title: Text('Grupos de Rock', style: TextStyle(color: Colors.black87)),
         backgroundColor: Colors.white,
         elevation: 1,
       ),
       body: ListView.builder(
           itemCount: bands.length,
+          // Lo que necesitamos para recorrer cada elemento de la lista
           itemBuilder: (context, i) => _bandTile(bands[i])),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
     );
   }
 
-  Widget _bandTile(Band band) {
+  Widget _bandTile(Band grupo) {
     return Dismissible(
-      key: Key(band.id),
+      // Tenemos que poner algún identificador único
+      key: Key(grupo.id),
       direction: DismissDirection.startToEnd,
       onDismissed: (direction) {
         print('direction: $direction');
-        print('id: ${band.id}');
+        print('id: ${grupo.id}');
         // TODO: llamar el borrado en el server
       },
       background: Container(
@@ -48,23 +51,27 @@ class _HomePageState extends State<HomePage> {
           color: Colors.red,
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text('Delete Band', style: TextStyle(color: Colors.white)),
+            child:
+                Text('Eliminar Grupo', style: TextStyle(color: Colors.white)),
           )),
       child: ListTile(
         leading: CircleAvatar(
-          child: Text(band.name.substring(0, 2)),
-          backgroundColor: Colors.blue[100],
+          child: Text(grupo.name.substring(0, 2)),
+          backgroundColor: Colors.red[100],
         ),
-        title: Text(band.name),
-        trailing: Text('${band.votes}', style: TextStyle(fontSize: 20)),
+        title: Text(grupo.name),
+        trailing: Text('${grupo.votes}', style: TextStyle(fontSize: 20)),
         onTap: () {
-          print(band.name);
+          print(grupo.name);
         },
       ),
     );
   }
 
+// Mostraremos un diálogo para añadir un grupo
+
   addNewBand() {
+    // Para obtenerla información que el usuario ingresa en el diálogo
     final textController = new TextEditingController();
 
     if (Platform.isAndroid) {
@@ -73,15 +80,16 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('New band name:'),
+            title: Text('Nombre del nuevo grupo:'),
             content: TextField(
+              //Le asigno al textview el controller
               controller: textController,
             ),
             actions: <Widget>[
               MaterialButton(
-                  child: Text('Add'),
+                  child: Text('Añadir'),
                   elevation: 5,
-                  textColor: Colors.blue,
+                  textColor: Colors.red,
                   onPressed: () => addBandToList(textController.text))
             ],
           );
@@ -89,28 +97,31 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    // iOS
     showCupertinoDialog(
         context: context,
         builder: (_) {
           return CupertinoAlertDialog(
-            title: Text('New band name:'),
+            title: Text('Nombre del nuevo grupo:'),
             content: CupertinoTextField(
               controller: textController,
             ),
             actions: <Widget>[
               CupertinoDialogAction(
+                  //optimiza el emulador
                   isDefaultAction: true,
-                  child: Text('Add'),
+                  child: Text('Añadir'),
                   onPressed: () => addBandToList(textController.text)),
               CupertinoDialogAction(
                   isDestructiveAction: true,
-                  child: Text('Dismiss'),
+                  child: Text('Cancelar'),
                   onPressed: () => Navigator.pop(context))
             ],
           );
         });
   }
 
+  // Si el tamaño del grupo tiene máa de una letra lo añado y cierro el diálogo
   void addBandToList(String name) {
     print(name);
 
